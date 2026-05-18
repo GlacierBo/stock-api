@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsx *)",
+      "Bash(curl -s http://localhost:3000/api/sources)",
+      "Bash(curl -s \"http://localhost:3000/api/stocks/search?q=SH510500\")",
+      "Bash(curl -s \"http://localhost:3000/api/stocks/search?q=%E6%A0%BC%E5%8A%9B%E7%94%B5%E5%99%A8\")",
+      "Bash(pkill -f \"tsx server/index.ts\")",
+      "Bash(npx vite *)",
+      "Bash(git add *)"
+    ]
+  }
+}

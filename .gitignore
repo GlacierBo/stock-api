@@ -1,5 +1,47 @@
+# Build outputs
 dist/
-.DS_Store
+web/dist/
+
+# Dependencies
 node_modules/
+web/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
 coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Status reports
 status/
+
+# TypeScript build info
+*.tsbuildinfo
