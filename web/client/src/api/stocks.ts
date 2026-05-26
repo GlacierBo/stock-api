@@ -13,7 +13,10 @@ async function request<T>(url: string): Promise<T> {
   return data.data as T;
 }
 
-export async function searchStocks(keyword: string, source?: StockSource): Promise<Stock[]> {
+export async function searchStocks(
+  keyword: string,
+  source?: StockSource
+): Promise<Stock[]> {
   const params = new URLSearchParams({ q: keyword });
   if (source && source !== "auto") {
     params.set("source", source);
@@ -21,7 +24,10 @@ export async function searchStocks(keyword: string, source?: StockSource): Promi
   return request<Stock[]>(`${BASE_URL}/stocks/search?${params}`);
 }
 
-export async function getStock(code: string, source?: StockSource): Promise<Stock> {
+export async function getStock(
+  code: string,
+  source?: StockSource
+): Promise<Stock> {
   const params = new URLSearchParams();
   if (source && source !== "auto") {
     params.set("source", source);
@@ -30,11 +36,17 @@ export async function getStock(code: string, source?: StockSource): Promise<Stoc
   return request<Stock>(`${BASE_URL}/stocks/${code}${query}`);
 }
 
-export async function getStocksBatch(codes: string[], source?: StockSource): Promise<Stock[]> {
+export async function getStocksBatch(
+  codes: string[],
+  source?: StockSource
+): Promise<Stock[]> {
   const response = await fetch(`${BASE_URL}/stocks/batch`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ codes, source: source !== "auto" ? source : undefined }),
+    body: JSON.stringify({
+      codes,
+      source: source !== "auto" ? source : undefined,
+    }),
   });
   const data: ApiResponse<Stock[]> = await response.json();
 

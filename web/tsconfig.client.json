@@ -15,6 +15,12 @@
       "@/*": ["./client/src/*"]
     }
   },
-  "include": ["client/src/**/*.ts", "client/src/**/*.vue", "shared/**/*.ts"],
+  "include": [
+    "client/src/**/*.ts",
+    "client/src/**/*.vue",
+    "client/auto-imports.d.ts",
+    "client/components.d.ts",
+    "shared/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

@@ -7,7 +7,17 @@
       "Bash(curl -s \"http://localhost:3000/api/stocks/search?q=%E6%A0%BC%E5%8A%9B%E7%94%B5%E5%99%A8\")",
       "Bash(pkill -f \"tsx server/index.ts\")",
       "Bash(npx vite *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(npm install *)",
+      "Bash(netstat -ano)",
+      "Bash(curl -s http://localhost:5175/)",
+      "Bash(curl -s http://localhost:5175/src/main.ts)",
+      "Bash(curl -s http://localhost:5176/src/main.ts)",
+      "Bash(curl -s http://localhost:5176/src/App.vue)",
+      "Bash(curl -s http://localhost:5176/src/components/search/SearchBar.vue)",
+      "Bash(curl -s \"http://localhost:5176/src/views/HomePage.vue\")",
+      "Bash(curl -s http://localhost:5176/src/views/StockDetailPage.vue)",
+      "Bash(curl *)"
     ]
   }
 }
