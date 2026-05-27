@@ -1,2 +1,2 @@
-npm run lint
-npm run ci
+pnpm -w run lint
+pnpm -w run ci

@@ -1,10 +1,9 @@
 # Build outputs
 dist/
-web/dist/
+packages/*/dist/
 
 # Dependencies
 node_modules/
-web/node_modules/
 
 # OS files
 .DS_Store

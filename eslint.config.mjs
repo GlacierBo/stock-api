@@ -4,12 +4,17 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["coverage/**", "dist/**", "node_modules/**", "web/dist/**", "web/node_modules/**", "web/client/**"],
+    ignores: [
+      "coverage/**",
+      "**/dist/**",
+      "**/node_modules/**",
+      "packages/client/**",
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.ts", "test/**/*.ts"],
+    files: ["packages/core/src/**/*.ts", "packages/core/test/**/*.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -24,13 +29,13 @@ export default tseslint.config(
     },
   },
   {
-    files: ["src/**/*.ts"],
+    files: ["packages/core/src/**/*.ts"],
     languageOptions: {
       globals: globals.node,
     },
   },
   {
-    files: ["test/**/*.ts"],
+    files: ["packages/core/test/**/*.ts"],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -42,7 +47,23 @@ export default tseslint.config(
     },
   },
   {
-    files: ["*.js", "*.cjs"],
+    files: ["packages/server/src/**/*.ts"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+      globals: globals.node,
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
+  },
+  {
+    files: ["*.js", "*.cjs", "packages/core/*.js"],
     languageOptions: {
       globals: globals.node,
       sourceType: "commonjs",
@@ -52,7 +73,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["*.mjs", "scripts/**/*.mjs"],
+    files: ["*.mjs", "scripts/**/*.mjs", "packages/core/scripts/**/*.mjs"],
     languageOptions: {
       globals: globals.node,
       sourceType: "module",
