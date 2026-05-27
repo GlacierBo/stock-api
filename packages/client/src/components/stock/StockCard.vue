@@ -5,11 +5,18 @@ import { formatPrice, getPriceBgClass } from "@/composables/usePriceFormat";
 
 const props = defineProps<{
   stock: Stock;
+  isWatched?: boolean;
 }>();
 
 const emit = defineEmits<{
   click: [stock: Stock];
+  "toggle-watch": [stock: Stock];
 }>();
+
+function handleToggleWatch(e: Event) {
+  e.stopPropagation();
+  emit("toggle-watch", props.stock);
+}
 </script>
 
 <template>
@@ -22,6 +29,18 @@ const emit = defineEmits<{
         <span class="stock-name">{{ stock.name }}</span>
         <span class="stock-code">{{ stock.code }}</span>
       </div>
+      <button
+        :class="['watch-btn', { watched: isWatched }]"
+        :title="isWatched ? '取消自选' : '加自选'"
+        @click="handleToggleWatch"
+      >
+        <svg v-if="isWatched" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+        <svg v-else viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      </button>
     </div>
     <div class="card-body">
       <PriceTag :now="stock.now" :percent="stock.percent" size="medium" />
@@ -59,6 +78,9 @@ const emit = defineEmits<{
 }
 
 .card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 12px;
 }
 
@@ -113,5 +135,29 @@ const emit = defineEmits<{
   font-size: 11px;
   color: var(--color-text-secondary);
   text-transform: uppercase;
+}
+
+.watch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.watch-btn:hover {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.watch-btn.watched {
+  color: #f59e0b;
 }
 </style>

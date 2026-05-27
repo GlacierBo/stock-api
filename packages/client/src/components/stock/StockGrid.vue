@@ -4,10 +4,12 @@ import StockCard from "./StockCard.vue";
 
 defineProps<{
   stocks: Stock[];
+  watchedCodes?: string[];
 }>();
 
 const emit = defineEmits<{
   "stock-click": [stock: Stock];
+  "toggle-watch": [stock: Stock];
 }>();
 </script>
 
@@ -17,7 +19,9 @@ const emit = defineEmits<{
       v-for="stock in stocks"
       :key="stock.code"
       :stock="stock"
+      :is-watched="watchedCodes?.includes(stock.code) ?? false"
       @click="emit('stock-click', stock)"
+      @toggle-watch="emit('toggle-watch', $event)"
     />
   </div>
 </template>

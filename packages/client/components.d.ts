@@ -27,5 +27,6 @@ declare module 'vue' {
     StockDetail: typeof import('./src/components/stock/StockDetail.vue')['default']
     StockGrid: typeof import('./src/components/stock/StockGrid.vue')['default']
     ThemeToggle: typeof import('./src/components/common/ThemeToggle.vue')['default']
+    WatchlistPanel: typeof import('./src/components/watchlist/WatchlistPanel.vue')['default']
   }
 }
