@@ -5,49 +5,15 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   {
     ignores: [
-      "coverage/**",
       "**/dist/**",
       "**/node_modules/**",
-      "packages/client/**",
+      "client/**",
     ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["packages/core/src/**/*.ts", "packages/core/test/**/*.ts"],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    rules: {
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
-    },
-  },
-  {
-    files: ["packages/core/src/**/*.ts"],
-    languageOptions: {
-      globals: globals.node,
-    },
-  },
-  {
-    files: ["packages/core/test/**/*.ts"],
-    languageOptions: {
-      globals: {
-        ...globals.jest,
-        ...globals.node,
-      },
-    },
-    rules: {
-      "@typescript-eslint/no-require-imports": "off",
-    },
-  },
-  {
-    files: ["packages/server/src/**/*.ts"],
+    files: ["server/src/**/*.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -63,7 +29,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["*.js", "*.cjs", "packages/core/*.js"],
+    files: ["*.js", "*.cjs"],
     languageOptions: {
       globals: globals.node,
       sourceType: "commonjs",
@@ -73,7 +39,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["*.mjs", "scripts/**/*.mjs", "packages/core/scripts/**/*.mjs"],
+    files: ["*.mjs"],
     languageOptions: {
       globals: globals.node,
       sourceType: "module",

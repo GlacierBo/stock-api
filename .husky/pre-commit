@@ -1,2 +1,0 @@
-pnpm -w run lint
-pnpm -w run ci

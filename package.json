@@ -1,39 +1,26 @@
 {
-  "name": "stock-api-monorepo",
-  "version": "0.0.0",
+  "name": "stock-api",
+  "version": "2.3.0",
   "private": true,
-  "description": "Stock market data API monorepo",
-  "repository": "https://github.com/GlacierBo/stock-api",
-  "author": "zhangxiangliang",
-  "engines": {
-    "node": ">=18"
-  },
+  "description": "Stock market data web application",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "husky",
-    "build": "pnpm -r run build",
-    "test": "pnpm --filter stock-api run test",
-    "test:integration": "pnpm --filter stock-api run test:integration",
-    "typecheck": "pnpm --filter stock-api run typecheck && pnpm --filter stock-api-web-server run typecheck",
-    "ci": "pnpm run build && pnpm run typecheck && pnpm run test",
-    "validate": "pnpm run lint && pnpm run ci",
-    "web:dev": "pnpm --filter stock-api-web-server run dev",
-    "web:build": "pnpm --filter stock-api-web-server run build",
-    "web:start": "pnpm --filter stock-api-web-server run start"
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm -w server run dev",
+    "dev:client": "npm -w client run dev",
+    "build": "npm -w client run build && npm -w server run build",
+    "start": "npm -w server run start",
+    "typecheck": "npm -w server run typecheck && npm -w client run typecheck",
+    "lint": "eslint ."
   },
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "@eslint/js": "^10.0.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.0",
-    "eslint": "^10.2.1",
     "globals": "^17.5.0",
-    "husky": "^9.1.7",
-    "jest": "^30.3.0",
-    "semantic-release": "^25.0.3",
-    "ts-jest": "^29.4.9",
+    "eslint": "^10.2.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.1"
   }
