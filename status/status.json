@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-10T22:50:05.845Z",
+  "results": [
+    {
+      "id": "tencent",
+      "label": "tencent",
+      "ok": true,
+      "message": "up",
+      "durationMs": 3030
+    },
+    {
+      "id": "sina",
+      "label": "sina",
+      "ok": true,
+      "message": "up",
+      "durationMs": 3411
+    },
+    {
+      "id": "eastmoney",
+      "label": "eastmoney",
+      "ok": false,
+      "message": "down",
+      "durationMs": 8337,
+      "error": "Request failed with status 502"
+    }
+  ]
+}
