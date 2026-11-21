@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-21T19:40:15.154Z",
+  "results": [
+    {
+      "id": "tencent",
+      "label": "tencent",
+      "ok": true,
+      "message": "up",
+      "durationMs": 2556
+    },
+    {
+      "id": "sina",
+      "label": "sina",
+      "ok": true,
+      "message": "up",
+      "durationMs": 5296
+    },
+    {
+      "id": "eastmoney",
+      "label": "eastmoney",
+      "ok": false,
+      "message": "down",
+      "durationMs": 6265,
+      "error": "Unexpected token 'j', \"jQuery3510\"... is not valid JSON"
+    }
+  ]
+}
